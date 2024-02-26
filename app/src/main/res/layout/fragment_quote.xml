@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/quote_back"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="16dp"
+
+        android:background="@android:color/transparent"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:text="@string/quote_back"
+        android:textSize="20sp"
+        app:icon="@drawable/back"
+        app:iconSize="32dp"
+        />
+
+    <TextView
+        android:id="@+id/quote_date"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="16dp"
+
+        android:text="@string/quote_date"
+        android:textSize="16sp"
+        android:textColor="?attr/dividerColor"
+        />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_weight="1"
+
+        style="@style/Surface"
+        android:background="@drawable/top_rounded_surface"
+        android:backgroundTint="?attr/dividerColor"
+        >
+
+        <TextView
+            android:id="@+id/quote_content"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+
+            android:text="@string/quote_content_placeholder"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            />
+
+    </ScrollView>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+
+        android:layout_marginHorizontal="16dp"
+        android:background="?attr/colorOnBackground"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/quote_copy_content"
+
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="16dp"
+
+            android:text="@string/quote_copy_content"
+            android:textSize="14sp"
+
+            style="@style/Surface"
+            android:background="@drawable/bottom_rounded_surface"
+            app:backgroundTint="?attr/dividerColor"
+
+            app:icon="@drawable/copy"
+            app:iconSize="20dp"
+            app:iconGravity="textStart"
+            />
+
+        <View
+            android:layout_width="3dp"
+            android:layout_height="1dp"
+            />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/quote_regenerate"
+
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="16dp"
+
+            android:text="@string/quote_regenerate"
+            android:textSize="14sp"
+
+            style="@style/Surface"
+            android:background="@drawable/bottom_rounded_surface"
+            app:backgroundTint="?attr/dividerColor"
+
+            app:icon="@drawable/regenerate"
+            app:iconSize="20dp"
+            app:iconGravity="textStart"
+            />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+
+        android:text="@string/quote_keywords_label"
+        android:textSize="24sp"
+        android:textColor="?attr/colorOnBackground"
+        />
+
+    <LinearLayout
+        android:orientation="horizontal"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="14dp"
+
+        style="@style/Surface"
+        android:background="@drawable/rounded_surface"
+        android:backgroundTint="?attr/dividerColor">
+
+        <TextView
+            android:id="@+id/quote_keywords"
+
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="12dp"
+
+            android:text="@string/quote_keywords_placeholder"
+            android:textSize="20sp"
+            android:textColor="?attr/colorOnBackground"
+            android:maxLines="3"
+            android:ellipsize="end"
+            />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_marginVertical="5dp"
+
+            android:background="?attr/colorOnBackground"
+            />
+
+        <ImageButton
+            android:id="@+id/quote_copy_keywords"
+
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="7dp"
+            android:padding="5dp"
+
+            android:scaleType="fitCenter"
+            android:layout_gravity="center"
+
+            android:background="@android:color/transparent"
+            android:foreground="?android:attr/selectableItemBackground"
+            app:tint="?attr/colorOnBackground"
+            android:src="@drawable/copy"
+            />
+
+    </LinearLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/quote_delete"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+
+        style="@style/Surface"
+        android:background="@drawable/rounded_surface_outline"
+        android:foreground="?android:attr/selectableItemBackground"
+        app:backgroundTint="@color/red"
+
+        android:text="@string/quote_remove"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/red"
+
+        app:icon="@drawable/delete"
+        app:iconSize="26dp"
+        app:iconTint="@color/red"
+        app:iconGravity="textStart"
+        />
+
+</LinearLayout>

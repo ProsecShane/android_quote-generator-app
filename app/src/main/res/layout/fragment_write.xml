@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/write_input_layout"
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <TextView
+            android:id="@+id/write_label"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/write_keywords"
+            android:layout_margin="16dp"
+
+            android:text="@string/write_label"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            />
+
+        <EditText
+            android:id="@+id/write_keywords"
+
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/write_label"
+            app:layout_constraintBottom_toBottomOf="@id/write_generate"
+            android:layout_marginHorizontal="16dp"
+
+            android:hint="@string/write_keywords_hint"
+            android:gravity="top|start"
+            android:textStyle="bold"
+
+            style="@style/Surface"
+            android:padding="16dp"
+            android:background="@drawable/rounded_surface"
+            android:backgroundTint="?attr/dividerColor"
+            />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/write_generate"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/write_keywords"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_margin="16dp"
+
+            android:text="@string/write_generate"
+
+            style="@style/Surface"
+            android:background="@drawable/rounded_surface"
+            android:backgroundTint="?attr/colorPrimary"
+            android:foreground="?android:attr/selectableItemBackground"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/write_status"
+        android:visibility="invisible"
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        >
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+
+            android:background="@color/dark"
+            />
+
+        <ProgressBar
+            android:id="@+id/write_status_progress"
+            android:visibility="invisible"
+
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+
+            android:indeterminateTint="@color/divider"
+            />
+
+        <ImageView
+            android:id="@+id/write_status_icon"
+            android:visibility="visible"
+
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+
+            android:src="@drawable/close"
+            app:tint="@color/red"
+            />
+
+        <TextView
+            android:id="@+id/write_status_text"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/write_status_icon"
+
+            android:text="@string/write_status_error"
+            android:textColor="@color/red"
+            android:textSize="18sp"
+            />
+
+        <TextView
+            android:id="@+id/write_status_error_message"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/write_status_text"
+
+            android:text="@string/write_status_error_placeholder"
+            android:textSize="18sp"
+            android:textColor="@color/red"
+            android:gravity="center"
+            android:maxLines="3"
+            android:ellipsize="end"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

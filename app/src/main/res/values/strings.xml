@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Quote App</string>
+    
+    <string name="write_label">Enter keywords to generate a quote:</string>
+    <string name="write_keywords_hint">gaming, grind, success</string>
+    <string name="write_generate">Generate Quote!</string>
+
+    <string name="write_status_in_progress">Your quote is being generated…</string>
+    <string name="write_status_error">An error occurred! Reason:</string>
+    <string name="write_status_success">Your quote is generated!</string>
+    <string name="write_status_error_placeholder">Unknown error</string>
+
+    <string name="quote_back">Back to List of Quotes</string>
+    <string name="quote_content_placeholder">Your quote here</string>
+    <string name="quote_copy_content">Copy Quote</string>
+    <string name="quote_regenerate">Re-Generate</string>
+    <string name="quote_keywords_label">Used keywords:</string>
+    <string name="quote_keywords_placeholder">Your keywords here</string>
+    <string name="quote_remove">Remove Quote</string>
+    <string name="quote_date">Made on: %s</string>
+
+    <!-- three lines -->
+    <string name="long_string">Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word</string>
+</resources>
