@@ -1,5 +1,10 @@
 package com.prosecshane.quoteapp.di
 
+import android.app.Application
+import androidx.room.Room
+import com.prosecshane.quoteapp.data.local.QuoteDao
+import com.prosecshane.quoteapp.data.local.QuoteDatabase
+import com.prosecshane.quoteapp.data.local.QuoteDatabaseConstants
 import com.prosecshane.quoteapp.data.remote.QuoteApi
 import com.prosecshane.quoteapp.data.remote.QuoteApiConstants
 import com.prosecshane.quoteapp.utils.Cryptography
@@ -19,7 +24,7 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object AppModule {
     /**
-     * A "provide" function that creates an instance of an interface.
+     * A "provide" function that creates an instance of the Api interface.
      *
      * @return Instance of the [QuoteApi] interface.
      */
@@ -38,5 +43,21 @@ object AppModule {
             .client(okHttpClient)
             .build()
             .create(QuoteApi::class.java)
+    }
+
+    /**
+     * A "provide" function that creates an instance of the Dao interface.
+     *
+     * @return Instance of the [QuoteDao] interface.
+     */
+    @Provides
+    @Singleton
+    fun provideQuoteDao(appContext: Application): QuoteDao {
+        val quoteDatabase = Room.databaseBuilder(
+            context = appContext,
+            klass = QuoteDatabase::class.java,
+            name = QuoteDatabaseConstants.filename,
+        ).build()
+        return quoteDatabase.quoteDao()
     }
 }

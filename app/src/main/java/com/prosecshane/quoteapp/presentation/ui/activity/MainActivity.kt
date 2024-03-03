@@ -135,7 +135,6 @@ class MainActivity : AppCompatActivity() {
                 FragmentVariant.List -> R.id.listFragment
                 FragmentVariant.Quote -> R.id.quoteFragment
                 FragmentVariant.Write -> R.id.writeFragment
-                FragmentVariant.Search -> R.id.searchFragment
                 FragmentVariant.Settings -> R.id.settingsFragment
             }
         )

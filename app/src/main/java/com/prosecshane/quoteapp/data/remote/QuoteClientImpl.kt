@@ -26,6 +26,10 @@ class QuoteClientImpl @Inject constructor(
         keywords: String,
         callback: (GenerationStatus) -> Unit,
     ) {
+        if (keywords == "") {
+            callback(GenerationStatus.Error("The keywords fields is empty!"))
+            return
+        }
         try {
             val response = api.generateQuote(defaultRequestBody(keywords))
             if (response.isSuccessful) {
@@ -33,18 +37,18 @@ class QuoteClientImpl @Inject constructor(
                 if (result != null) {
                     val quote = result.choices.first().message.content
                     if (quote.contains(RequestConstants.errorMessage)) {
-                        callback(GenerationStatus.Error("AI model could not generate a response"))
+                        callback(GenerationStatus.Error("AI model could not generate a response! Try again or change the topic of your prompt."))
                     } else {
                         callback(GenerationStatus.Success(quote))
                     }
                 } else {
-                    callback(GenerationStatus.Error("Empty response"))
+                    callback(GenerationStatus.Error("Empty response."))
                 }
             } else {
-                callback(GenerationStatus.Error("Bad response (${response.code()})"))
+                callback(GenerationStatus.Error("Bad response (${response.code()})."))
             }
         } catch (e: Exception) {
-            callback(GenerationStatus.Error("Call failed (${e.message})"))
+            callback(GenerationStatus.Error("Call failed (${e.message})."))
         }
     }
 }

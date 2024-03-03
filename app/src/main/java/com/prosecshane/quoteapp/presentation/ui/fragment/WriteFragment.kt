@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
+import android.view.inputmethod.EditorInfo
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.ProgressBar
@@ -17,8 +18,8 @@ import androidx.lifecycle.lifecycleScope
 import com.google.android.material.button.MaterialButton
 import com.prosecshane.quoteapp.R
 import com.prosecshane.quoteapp.domain.network.GenerationStatus
+import com.prosecshane.quoteapp.presentation.viewmodel.KeywordsViewModel
 import com.prosecshane.quoteapp.presentation.viewmodel.QuoteAppViewModel
-import com.prosecshane.quoteapp.presentation.viewmodel.WriteViewModel
 import com.prosecshane.quoteapp.utils.setOnTextChangedListener
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
@@ -34,7 +35,7 @@ class WriteFragment : Fragment() {
      * ViewModel used specifically for this fragment.
      * Remembers the entered keywords.
      */
-    private val writeViewModel: WriteViewModel by activityViewModels()
+    private val keywordsViewModel: KeywordsViewModel by activityViewModels()
 
     /**
      * ViewModel used in the activity.
@@ -76,14 +77,25 @@ class WriteFragment : Fragment() {
         generateButton.setOnClickListener {
             lifecycleScope.launch {
                 withContext(Dispatchers.IO) {
-                    quoteAppViewModel.generateQuote(writeViewModel.keywords.value)
+                    quoteAppViewModel.generateQuote(keywordsViewModel.keywords.value)
                 }
             }
         }
 
-        keywordsText.setText(writeViewModel.keywords.value)
+        keywordsText.setText(keywordsViewModel.keywords.value)
         keywordsText.setOnTextChangedListener { newValue ->
-            writeViewModel.setKeywords(newValue)
+            keywordsViewModel.setKeywords(newValue)
+        }
+        keywordsText.setOnEditorActionListener { _, aid, _ ->
+            if (aid == EditorInfo.IME_ACTION_SEND) {
+                lifecycleScope.launch {
+                    withContext(Dispatchers.IO) {
+                        quoteAppViewModel.generateQuote(keywordsViewModel.keywords.value)
+                    }
+                }
+                return@setOnEditorActionListener true
+            }
+            false
         }
 
         lifecycleScope.launch {

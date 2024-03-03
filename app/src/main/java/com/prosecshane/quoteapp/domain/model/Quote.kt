@@ -1,5 +1,9 @@
 package com.prosecshane.quoteapp.domain.model
 
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import com.prosecshane.quoteapp.data.local.QuoteDatabaseConstants
 import java.util.UUID
 
 /**
@@ -11,9 +15,18 @@ import java.util.UUID
  * @param content The string of the quote itself.
  * @param keywords Keywords used to create the quote.
  */
+@Entity(tableName = QuoteDatabaseConstants.tableName)
 data class Quote(
+    @PrimaryKey(autoGenerate = false)
+    @ColumnInfo(name = "id")
     val id: String = UUID.randomUUID().toString(),
+
+    @ColumnInfo(name = "created")
     val created: Long = System.currentTimeMillis(),
+
+    @ColumnInfo(name = "content")
     val content: String,
+
+    @ColumnInfo(name = "keywords")
     val keywords: String,
 )

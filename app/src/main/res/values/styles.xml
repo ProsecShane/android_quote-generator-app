@@ -17,4 +17,22 @@
         <item name="android:elevation">4dp</item>
         <item name="android:textSize">24sp</item>
     </style>
+
+    <style name="SortItem">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:gravity">start|center_vertical</item>
+
+        <item name="icon">@drawable/done</item>
+        <item name="iconSize">26dp</item>
+        <item name="iconTint">@color/white</item>
+        <item name="iconGravity">end</item>
+
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:foreground">?android:attr/selectableItemBackground</item>
+    </style>
 </resources>
