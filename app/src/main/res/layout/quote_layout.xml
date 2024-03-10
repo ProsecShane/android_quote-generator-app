@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:foreground="?android:attr/selectableItemBackground">
+
+    <TextView
+        android:id="@+id/item_content"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="6dp"
+
+        android:text="@string/item_content"
+        android:textSize="20sp"
+        android:textColor="?attr/colorOnBackground"
+
+        android:maxLines="2"
+        android:ellipsize="end"
+        />
+
+    <TextView
+        android:id="@+id/item_date"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="6dp"
+        android:layout_marginTop="3dp"
+
+        android:text="@string/item_date"
+        android:textSize="16sp"
+        android:textColor="?attr/dividerColor"
+
+        android:maxLines="1"
+        android:ellipsize="end"
+        />
+
+</LinearLayout>

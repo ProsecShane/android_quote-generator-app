@@ -21,13 +21,6 @@
     </fragment>
 
     <fragment
-        android:id="@+id/searchFragment"
-        android:name="com.prosecshane.quoteapp.presentation.ui.fragment.SearchFragment"
-        android:label="SearchFragment"
-        tools:layout="@layout/fragment_search">
-    </fragment>
-
-    <fragment
         android:id="@+id/settingsFragment"
         android:name="com.prosecshane.quoteapp.presentation.ui.fragment.SettingsFragment"
         android:label="SettingsFragment"

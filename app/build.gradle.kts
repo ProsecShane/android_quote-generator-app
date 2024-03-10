@@ -62,6 +62,7 @@ dependencies {
     annotationProcessor("androidx.room:room-compiler:$roomVersion")
     kapt("androidx.room:room-compiler:$roomVersion")
     testImplementation("androidx.room:room-testing:$roomVersion")
+    implementation("androidx.room:room-ktx:$roomVersion")
 
     // Dagger Hilt
     val hiltVersion = "2.50"

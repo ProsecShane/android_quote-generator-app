@@ -2,8 +2,10 @@ package com.prosecshane.quoteapp.di
 
 import com.prosecshane.quoteapp.data.remote.QuoteClientImpl
 import com.prosecshane.quoteapp.data.repository.QuoteRepositoryImpl
+import com.prosecshane.quoteapp.data.sharedpreferences.SPApiImpl
 import com.prosecshane.quoteapp.domain.repository.QuoteClient
 import com.prosecshane.quoteapp.domain.repository.QuoteRepository
+import com.prosecshane.quoteapp.domain.sharedpreferences.SPApi
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -41,4 +43,16 @@ abstract class BackendModule {
     abstract fun bindQuoteClient(
         quoteClient: QuoteClientImpl
     ): QuoteClient
+
+    /**
+     * Function that creates (binds) a SPApi singleton.
+     *
+     * @param spApi Implementation of an interface in form of a [SPApiImpl] class instance.
+     * @return Instance of the [SPApi] interface.
+     */
+    @Binds
+    @Singleton
+    abstract fun bindSPApi(
+        spApi: SPApiImpl,
+    ): SPApi
 }

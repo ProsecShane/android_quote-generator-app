@@ -10,7 +10,7 @@
     <string name="write_status_success">Your quote is generated!</string>
     <string name="write_status_error_placeholder">Unknown error</string>
 
-    <string name="quote_back">Back to List of Quotes</string>
+    <string name="quote_back">Back</string>
     <string name="quote_content_placeholder">Your quote here</string>
     <string name="quote_copy_content">Copy Quote</string>
     <string name="quote_regenerate">Re-Generate</string>
@@ -18,6 +18,38 @@
     <string name="quote_keywords_placeholder">Your keywords here</string>
     <string name="quote_remove">Remove Quote</string>
     <string name="quote_date">Made on: %s</string>
+
+    <string name="list_label">Saved Quotes</string>
+    <string name="list_no_items">No Quotes</string>
+
+    <string name="item_content">I\'m walking on the sun, with the stars on my shoulders and the wind in my hair. Or some other complicated metaphor.</string>
+    <string name="item_date">Yesterday</string>
+    <string name="item_format">%s • %s</string>
+
+    <string name="settings_label">Settings</string>
+    <string name="settings_swiped_label">Confirm Swipe Deletion</string>
+    <string name="settings_swiped_description">Confirm the deletion of quotes in lists after swiping it off to the left</string>
+    <string name="settings_in_quote_label">Confirm In-Quote Deletion</string>
+    <string name="settings_in_quote_description">Confirm the deletion of a quote in a quote view window</string>
+    <string name="settings_on">Confirm</string>
+    <string name="settings_off">Don\'t Confirm</string>
+    <string name="settings_clear">Delete ALL Quotes</string>
+    
+    <string name="delete_title">Confirm Delete</string>
+    <string name="delete_description">Are you sure you want to delete this Quote?</string>
+    <string name="delete_yes">Delete</string>
+    <string name="delete_no">Cancel</string>
+
+    <string name="clear_title">Confirm Clear</string>
+    <string name="clear_description">Are you sure you want to permanently delete all Quotes?</string>
+    <string name="clear_description_2">Are you really sure you want to PERMANENTLY delete ALL Quotes?</string>
+
+    <string name="sort_date_desc">New first</string>
+    <string name="sort_date_asc">Old first</string>
+    <string name="sort_quote_asc">Quote Alphabetical</string>
+    <string name="sort_quote_desc">Quote Backwards</string>
+    <string name="sort_kw_asc">Keywords Alphabetical</string>
+    <string name="sort_kw_desc">Keywords Backwards</string>
 
     <!-- three lines -->
     <string name="long_string">Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word</string>

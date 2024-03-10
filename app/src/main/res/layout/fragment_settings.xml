@@ -7,15 +7,203 @@
     >
 
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/settings_label"
+
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
+
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="16dp"
 
-        android:text="Settings Fragment"
+        android:text="@string/settings_label"
         android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="?attr/colorOnBackground"
+        />
+
+    <TextView
+        android:id="@+id/settings_swiped_label"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintTop_toBottomOf="@id/settings_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="20dp"
+
+        android:text="@string/settings_swiped_label"
+        android:textSize="24sp"
+        android:textColor="?attr/colorOnBackground"
+        />
+
+    <TextView
+        android:id="@+id/settings_swiped_description"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintTop_toBottomOf="@id/settings_swiped_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="4dp"
+
+        android:text="@string/settings_swiped_description"
+        android:textSize="20sp"
+        android:textColor="?attr/dividerColor"
+        />
+
+    <RadioGroup
+        android:id="@+id/settings_swiped_group"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintTop_toBottomOf="@id/settings_swiped_description"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="4dp"
+        >
+
+        <RadioButton
+            android:id="@+id/settings_swiped_on"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+
+            android:text="@string/settings_on"
+            android:textSize="20sp"
+            android:textColor="?attr/colorOnBackground"
+
+            android:checked="true"
+
+            android:foreground="?android:attr/selectableItemBackground"
+            />
+
+        <RadioButton
+            android:id="@+id/settings_swiped_off"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+
+            android:text="@string/settings_off"
+            android:textSize="20sp"
+            android:textColor="?attr/colorOnBackground"
+
+            android:foreground="?android:attr/selectableItemBackground"
+            />
+
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/settings_in_quote_label"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintTop_toBottomOf="@id/settings_swiped_group"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="20dp"
+
+        android:text="@string/settings_in_quote_label"
+        android:textSize="24sp"
+        android:textColor="?attr/colorOnBackground"
+        />
+
+    <TextView
+        android:id="@+id/settings_in_quote_description"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintTop_toBottomOf="@id/settings_in_quote_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="4dp"
+
+        android:text="@string/settings_in_quote_description"
+        android:textSize="20sp"
+        android:textColor="?attr/dividerColor"
+        />
+
+    <RadioGroup
+        android:id="@+id/settings_in_quote_group"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintTop_toBottomOf="@id/settings_in_quote_description"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="4dp"
+        >
+
+        <RadioButton
+            android:id="@+id/settings_in_quote_on"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+
+            android:text="@string/settings_on"
+            android:textSize="20sp"
+            android:textColor="?attr/colorOnBackground"
+
+            android:checked="true"
+
+            android:foreground="?android:attr/selectableItemBackground"
+            />
+
+        <RadioButton
+            android:id="@+id/settings_in_quote_off"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+
+            android:text="@string/settings_off"
+            android:textSize="20sp"
+            android:textColor="?attr/colorOnBackground"
+
+            android:foreground="?android:attr/selectableItemBackground"
+            />
+
+    </RadioGroup>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/settings_clear"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        style="@style/Surface"
+        android:background="@drawable/rounded_surface_outline"
+        android:foreground="?android:attr/selectableItemBackground"
+        app:backgroundTint="@color/red"
+
+        android:text="@string/settings_clear"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/red"
+
+        app:icon="@drawable/delete"
+        app:iconSize="26dp"
+        app:iconTint="@color/red"
+        app:iconGravity="textStart"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

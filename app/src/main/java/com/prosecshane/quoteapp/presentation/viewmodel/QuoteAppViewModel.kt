@@ -39,7 +39,8 @@ class QuoteAppViewModel @Inject constructor(
      * the current quote that needs to be displayed in the Quote Fragment.
      */
     private val _currentQuote = MutableStateFlow(Quote(
-        content = "No quote", keywords = "No keywords"
+        content = "No quote",
+        keywords = "No keywords",
     ))
     val currentQuote: StateFlow<Quote> = _currentQuote.asStateFlow()
 
@@ -50,7 +51,6 @@ class QuoteAppViewModel @Inject constructor(
     private val _generationStatus: MutableStateFlow<GenerationStatus> =
         MutableStateFlow(GenerationStatus.None)
     val generationStatus: StateFlow<GenerationStatus> = _generationStatus.asStateFlow()
-
 
     /**
      * Adds a new entry to the top of the fragment stack.
@@ -75,13 +75,14 @@ class QuoteAppViewModel @Inject constructor(
      *
      * @param quote New [Quote] value.
      */
-    private fun setQuote(quote: Quote) {
+    fun setQuote(quote: Quote) {
         _currentQuote.update { quote }
     }
 
     /**
      * Requests the repository for a quote to be generated.
      * Changes the ViewModel's state holders depending on the result of the request.
+     * If a quote is successfully generated, then it gets saved.
      *
      * @param keywords Keywords used for quote generation.
      */
@@ -98,8 +99,14 @@ class QuoteAppViewModel @Inject constructor(
                     }
                     is GenerationStatus.Success -> {
                         viewModelScope.launch { withContext(Dispatchers.IO) {
-                            sleep(2000)
-                            setQuote(Quote(content = it.quote, keywords = keywords))
+                            val quote = Quote(content = it.quote, keywords = keywords)
+
+                            val startedWriting = System.currentTimeMillis()
+                            repository.saveQuote(quote)
+                            val writingTime = System.currentTimeMillis() - startedWriting
+                            if (writingTime < 2000) sleep(2000 - writingTime)
+
+                            setQuote(quote)
                             addToLastPressedStack(FragmentVariant.Quote)
                             setGenerationStatus(GenerationStatus.None)
                         } }

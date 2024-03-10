@@ -32,6 +32,7 @@
             android:text="@string/write_label"
             android:textSize="24sp"
             android:textStyle="bold"
+            android:textColor="?attr/colorOnBackground"
             />
 
         <EditText
@@ -54,6 +55,10 @@
             android:padding="16dp"
             android:background="@drawable/rounded_surface"
             android:backgroundTint="?attr/dividerColor"
+
+            android:inputType="text"
+            android:imeOptions="actionSend"
+            android:imeActionLabel="Send"
             />
 
         <com.google.android.material.button.MaterialButton
@@ -69,6 +74,7 @@
             android:layout_margin="16dp"
 
             android:text="@string/write_generate"
+            android:textColor="?attr/colorOnBackground"
 
             style="@style/Surface"
             android:background="@drawable/rounded_surface"
