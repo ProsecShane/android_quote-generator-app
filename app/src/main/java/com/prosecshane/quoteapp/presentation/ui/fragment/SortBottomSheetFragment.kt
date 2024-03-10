@@ -16,10 +16,20 @@ import com.prosecshane.quoteapp.presentation.viewmodel.LocalDataViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
+/**
+ * [BottomSheetDialogFragment] implementation that makes the user pick a sort method.
+ */
 @AndroidEntryPoint
 class SortBottomSheetFragment : BottomSheetDialogFragment() {
+    /**
+     * A ViewModel that deals with locally stored data.
+     * Displays the current sort method and sets a new one.
+     */
     private val localDataViewModel: LocalDataViewModel by activityViewModels()
 
+    /**
+     * Obligatory function that sets the layout for the fragment.
+     */
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -27,6 +37,9 @@ class SortBottomSheetFragment : BottomSheetDialogFragment() {
         return inflater.inflate(R.layout.sort_choice, container, false)
     }
 
+    /**
+     * Function that sets up all of the logic for the fragment.
+     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val list: LinearLayout = view.findViewById(R.id.sort_choices)

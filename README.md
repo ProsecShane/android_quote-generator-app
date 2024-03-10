@@ -1,6 +1,6 @@
 # Quote Generator App
 
-**App icon will be here soon**
+![](https://i.ibb.co/H2wpV3G/icon.png)
 
 ### Made by: Alekseev Vyacheslav (ProsecShane)
 > Для русского перевода промотайте ниже
@@ -8,9 +8,11 @@
 App that can generate a quote based on given keywords by using an AI language model.
 Made for **Android** with **Kotlin**.
 
-[**Release version will be here soon**]()
+[**Pre-release version is out!**](https://github.com/ProsecShane/android_quote-generator-app/releases/tag/v1.0.0-beta)
 
-**App screenshots will be here soon**
+![](https://i.ibb.co/9WzdNrc/concat1.png)
+
+![](https://i.ibb.co/GWPjQL9/concat2.png)
 
 ----
 
@@ -29,17 +31,15 @@ Android development technology, used in this project:
     * Jetpack Navigation
     * View
     * Animations
-    * Swipe-to-Delete with Jetpack Compose (**Not yet implemented!**)
+    * Swipe-to-Delete
 * Backend (AI language model)
     * fireworks.ai
 * Network
     * Retrofit
-* Data storage (**Not yet implemented!**)
+* Data storage
     * Room
     * Shared Preferences
 * Tests (**Not yet implemented!**)
-    * Android Tests
-    * Unit Test
 * Notifications (**Not yet implemented!**)
 
 **If you have any questions, contact me through this: prosecshane@yandex.ru**
@@ -48,16 +48,18 @@ Android development technology, used in this project:
 
 # Приложение "Генератор цитат"
 
-**Скоро здесь будет иконка приложения**
+![](https://i.ibb.co/H2wpV3G/icon.png)
 
 ### Автор: Алексеев Вячеслав (ProsecShane)
 
 Приложение, которое генерирует цитату на основании данных ключевых слов при помощи ИИ языковой модели.
 Сделано для **Android** с помощью **Kotlin**.
 
-[**Скоро здесь будет релизная версия**]()
+[**Вышла пре-релизная версия приложения!**](https://github.com/ProsecShane/android_quote-generator-app/releases/tag/v1.0.0-beta)
 
-**Скоро здесь будут скриншоты приложения**
+![](https://i.ibb.co/9WzdNrc/concat1.png)
+
+![](https://i.ibb.co/GWPjQL9/concat2.png)
 
 ----
 
@@ -76,17 +78,15 @@ Android development technology, used in this project:
     * Jetpack Navigation
     * View
     * Анимации
-    * Swipe-to-Delete с помощью Jetpack Compose (**Пока что не реализовано!**)
+    * Swipe-to-Delete
 * Бэкенд (ИИ языковая модель)
     * fireworks.ai
 * Запросы
     * Retrofit
-* Хранение данных (**Пока что не реализовано!**)
+* Хранение данных
     * Room
     * Shared Preferences
 * Тесты (**Пока что не реализовано!**)
-    * Android Tests
-    * Unit Test
 * Уведомления (**Пока что не реализовано!**)
 
 **Если у вас есть какие-либо вопросы, вы можете обратиться ко мне по электронной почте: prosecshane@yandex.ru**

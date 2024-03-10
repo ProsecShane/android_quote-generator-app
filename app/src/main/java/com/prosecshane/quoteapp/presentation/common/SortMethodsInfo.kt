@@ -2,6 +2,9 @@ package com.prosecshane.quoteapp.presentation.common
 
 import com.prosecshane.quoteapp.R
 
+/**
+ * List of all the information regarding sorting methods.
+ */
 val sortMethodsInfo = listOf(
     SortMethodInfo(
         id = 0,

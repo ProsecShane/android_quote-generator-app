@@ -26,13 +26,24 @@ import kotlinx.coroutines.launch
 
 /**
  * A [Fragment] containing all the saved quotes.
- * Not yet implemented!
  */
 @AndroidEntryPoint
 class ListFragment : Fragment() {
+    /**
+     * A ViewModel that deals with the data stored locally.
+     * Used to get sort method and quotes and set or delete quotes.
+     */
     private val localDataViewModel: LocalDataViewModel by activityViewModels()
+
+    /**
+     * A ViewModel that goes through the entire app.
+     * Used for screen transfer by opening quotes from the list.
+     */
     private val quoteAppViewModel: QuoteAppViewModel by activityViewModels()
 
+    /**
+     * Obligatory function that sets the layout for the Fragment.
+     */
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -40,6 +51,9 @@ class ListFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_list, container, false)
     }
 
+    /**
+     * Main function that sets up logic for the fragment.
+     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -102,6 +116,14 @@ class ListFragment : Fragment() {
         }
     }
 
+    /**
+     * A function that sets up the RecyclerView.
+     *
+     * @param recyclerView The [RecyclerView] to set up.
+     * @param onItemClickCallback Callback invoked by item click.
+     * @param onItemSwipedCallback Callback invoked by item swipe.
+     * @param initialList The initial value for items of the [RecyclerView].
+     */
     private fun setUpRecyclerView(
         recyclerView: RecyclerView,
         onItemClickCallback: (Quote) -> Unit,
@@ -125,6 +147,9 @@ class ListFragment : Fragment() {
         (recyclerView.adapter as QuoteListAdapter).submitList(initialList.toList())
     }
 
+    /**
+     * Function that opens up the bottom sheet that allows to pick a sort method.
+     */
     private fun chooseSort() {
         val bottomSheetFragment = SortBottomSheetFragment()
         bottomSheetFragment.show(childFragmentManager, bottomSheetFragment.tag)

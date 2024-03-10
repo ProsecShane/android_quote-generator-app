@@ -44,6 +44,12 @@ abstract class BackendModule {
         quoteClient: QuoteClientImpl
     ): QuoteClient
 
+    /**
+     * Function that creates (binds) a SPApi singleton.
+     *
+     * @param spApi Implementation of an interface in form of a [SPApiImpl] class instance.
+     * @return Instance of the [SPApi] interface.
+     */
     @Binds
     @Singleton
     abstract fun bindSPApi(

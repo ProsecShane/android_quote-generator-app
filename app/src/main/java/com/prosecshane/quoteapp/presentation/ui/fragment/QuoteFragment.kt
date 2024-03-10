@@ -55,7 +55,7 @@ class QuoteFragment : Fragment() {
     /**
      * This function connects ViewModel's information to fragment's UI
      * to keep it updated. It also binds all the clickable buttons
-     * to do their respective actions. Not fully implemented yet!
+     * to do their respective actions.
      */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

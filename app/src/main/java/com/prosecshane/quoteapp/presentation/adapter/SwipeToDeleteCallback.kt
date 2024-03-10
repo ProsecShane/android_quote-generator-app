@@ -12,9 +12,15 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.prosecshane.quoteapp.R
 
+/**
+ * A callback for ItemTouchHelper that allows swipe to delete functionality.
+ */
 abstract class SwipeToDeleteCallback(
     context: Context
 ) : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
+    /**
+     * Dimensions and objects used to style.
+     */
     private val deleteIcon = ContextCompat.getDrawable(context, R.drawable.delete)
     private val intrinsicWidth = deleteIcon!!.intrinsicWidth
     private val intrinsicHeight = deleteIcon!!.intrinsicHeight
@@ -30,6 +36,9 @@ abstract class SwipeToDeleteCallback(
         return false
     }
 
+    /**
+     * Draws or removes the red background that appears while swiping.
+     */
     override fun onChildDraw(
         c: Canvas,
         recyclerView: RecyclerView,
@@ -86,6 +95,9 @@ abstract class SwipeToDeleteCallback(
         super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
     }
 
+    /**
+     * Removes everything drawn by this callback.
+     */
     private fun clearCanvas(c: Canvas?, left: Float, top: Float, right: Float, bottom: Float) {
         c?.drawRect(left, top, right, bottom, clearPaint)
     }

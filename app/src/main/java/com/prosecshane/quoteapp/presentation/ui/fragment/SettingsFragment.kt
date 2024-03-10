@@ -17,12 +17,18 @@ import kotlinx.coroutines.launch
 
 /**
  * A [Fragment] containing settings for the app.
- * Not yet implemented!
  */
 @AndroidEntryPoint
 class SettingsFragment : Fragment() {
+    /**
+     * A ViewModel that deals with all the data stored locally.
+     * Used to set the settings and clear quotes if requested.
+     */
     private val localDataViewModel: LocalDataViewModel by activityViewModels()
 
+    /**
+     * Obligatory function to set the layout for the fragment.
+     */
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -30,6 +36,9 @@ class SettingsFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_settings, container, false)
     }
 
+    /**
+     * Function that sets up all the logic in the fragment.
+     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -59,6 +68,14 @@ class SettingsFragment : Fragment() {
         }
     }
 
+    /**
+     * Binds the [RadioButton]s logic.
+     *
+     * @param swipedOn The button that makes the user confirm the deletion on swipe.
+     * @param swipedOff The button that disables the user's confirmation of the deletion on swipe.
+     * @param inQuoteOff The button that makes the user confirm the deletion when in quote.
+     * @param inQuoteOn The button that disables the user's confirmation of the deletion when in quote.
+     */
     private fun bindRadioButtons(
         swipedOn: RadioButton,
         swipedOff: RadioButton,
@@ -72,6 +89,9 @@ class SettingsFragment : Fragment() {
         inQuoteOff.setOnClickListener { localDataViewModel.setAskWhenInQuote(false) }
     }
 
+    /**
+     * Binds the Button that clears all the quotes.
+     */
     private fun bindClearButton(clearButton: MaterialButton) {
         clearButton.setOnClickListener {
             confirmClear {
@@ -80,6 +100,11 @@ class SettingsFragment : Fragment() {
         }
     }
 
+    /**
+     * First confirmation of the quotes' clear.
+     *
+     * @param onDeleteCallback Callback that clears all the quotes.
+     */
     private fun confirmClear(
         onDeleteCallback: () -> Unit,
     ) {
@@ -98,6 +123,11 @@ class SettingsFragment : Fragment() {
             .show()
     }
 
+    /**
+     * Second confirmation of the quotes' clear.
+     *
+     * @param onDeleteCallback Callback that clears all the quotes.
+     */
     private fun confirmClear2(
         onDeleteCallback: () -> Unit,
     ) {

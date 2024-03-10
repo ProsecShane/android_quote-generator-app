@@ -29,6 +29,9 @@ class KeywordsViewModel @Inject constructor(
     private val _keywords = MutableStateFlow("")
     val keywords: StateFlow<String> = _keywords.asStateFlow()
 
+    /**
+     * Getting initial value for the StateFlow.
+     */
     init {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
