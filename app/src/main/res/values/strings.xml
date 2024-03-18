@@ -28,11 +28,9 @@
 
     <string name="settings_label">Settings</string>
     <string name="settings_swiped_label">Confirm Swipe Deletion</string>
-    <string name="settings_swiped_description">Confirm the deletion of quotes in lists after swiping it off to the left</string>
+    <string name="settings_swiped_description">Confirm the deletion of quotes in lists after swiping it to the left</string>
     <string name="settings_in_quote_label">Confirm In-Quote Deletion</string>
-    <string name="settings_in_quote_description">Confirm the deletion of a quote in a quote view window</string>
-    <string name="settings_on">Confirm</string>
-    <string name="settings_off">Don\'t Confirm</string>
+    <string name="settings_in_quote_description">Confirm the deletion of quotes in a quote view window</string>
     <string name="settings_clear">Delete ALL Quotes</string>
     
     <string name="delete_title">Confirm Delete</string>

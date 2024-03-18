@@ -69,7 +69,11 @@ class ListFragment : Fragment() {
             val onDeleteCallback: () -> Unit = { localDataViewModel.deleteQuote(quote) }
             val onCancelCallback: () -> Unit = {
                 val adapter = recyclerView.adapter as QuoteListAdapter
-                adapter.redrawViewHolder(localDataViewModel.quotes.value.indexOf(quote))
+                for (i in 0 until localDataViewModel.quotes.value.size) {
+                    if (adapter.getItem(i).id == quote.id) {
+                        adapter.redrawViewHolder(i)
+                    }
+                }
             }
 
             if (localDataViewModel.askWhenSwiped.value) {

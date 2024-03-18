@@ -1,38 +1,129 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="BottomBarButton">
-        <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">55dp</item>
-        <item name="android:layout_weight">1</item>
+    <!-- ========= Text styles ========= -->
 
-        <item name="android:scaleType">fitCenter</item>
-        <item name="android:padding">10dp</item>
-        <item name="android:layout_gravity">center</item>
-
-        <item name="android:background">?android:attr/selectableItemBackground</item>
-        <item name="android:tint">@color/divider</item>
+    <style name="Text">
+        <item name="android:textSize">@dimen/text_size</item>
+        <item name="android:textColor">@color/on_background</item>
     </style>
 
-    <style name="Surface">
-        <item name="android:elevation">4dp</item>
-        <item name="android:textSize">24sp</item>
+    <style name="Text.Large">
+        <item name="android:textSize">@dimen/large_text_size</item>
     </style>
 
-    <style name="SortItem">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
+    <style name="Text.Subtitle">
+        <item name="android:textSize">@dimen/subtitle_text_size</item>
+    </style>
+    
+    <style name="Text.Subtitle.CenteredAndLimited">
+        <item name="android:gravity">center</item>
+        <item name="android:maxLines">5</item>
+        <item name="android:ellipsize">end</item>
+    </style>
 
-        <item name="android:textSize">20sp</item>
-        <item name="android:textStyle">normal</item>
-        <item name="android:textColor">@color/white</item>
-        <item name="android:gravity">start|center_vertical</item>
+    <style name="Text.Title">
+        <item name="android:textSize">@dimen/title_text_size</item>
+        <item name="android:textStyle">bold</item>
+    </style>
 
-        <item name="icon">@drawable/done</item>
-        <item name="iconSize">26dp</item>
-        <item name="iconTint">@color/white</item>
-        <item name="iconGravity">end</item>
+    <!-- ========= Surfaces ========= -->
 
+    <style name="BackgroundSurface">
+        <item name="android:background">@drawable/rounded_surface</item>
+        <item name="android:backgroundTint">@color/divider</item>
+        <item name="android:elevation">@dimen/elevation</item>
+    </style>
+
+    <style name="ClickableSurface">
         <item name="android:background">@android:color/transparent</item>
         <item name="android:foreground">?android:attr/selectableItemBackground</item>
     </style>
+
+    <!-- ========= Icon ========= -->
+
+    <style name="Icon">
+        <item name="android:scaleType">fitCenter</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="tint">@color/on_background</item>
+    </style>
+
+    <!-- ========= Special style for certain views ========= -->
+    
+    <style name="LargeEditText" parent="BackgroundSurface">
+        <item name="android:textSize">@dimen/title_text_size</item>
+        <item name="android:textColor">@color/on_background</item>
+        <item name="android:textStyle">bold</item>
+        
+        <item name="android:padding">@dimen/margin_m</item>
+        <item name="android:inputType">text</item>
+        <item name="android:imeOptions">actionSend</item>
+        <item name="android:imeActionLabel">Send</item>
+        <item name="android:gravity">top|start</item>
+    </style>
+    
+    <style name="AccentButton" parent="BackgroundSurface">
+        <item name="android:textSize">@dimen/title_text_size</item>
+        <item name="android:textColor">@color/on_background</item>
+
+        <item name="android:backgroundTint">@color/primary</item>
+
+        <item name="android:foreground">?android:attr/selectableItemBackground</item>
+    </style>
+    
+    <style name="DeleteButton">
+        <item name="android:textSize">@dimen/subtitle_text_size</item>
+        <item name="android:textColor">@color/red</item>
+        
+        <item name="android:background">@drawable/rounded_surface_outline</item>
+        <item name="android:foreground">?android:attr/selectableItemBackground</item>
+
+        <item name="android:textStyle">bold</item>
+        <item name="android:elevation">@dimen/elevation</item>
+        <item name="backgroundTint">@color/red</item>
+        <item name="iconGravity">textStart</item>
+        <item name="iconTint">@color/red</item>
+        <item name="iconSize">26dp</item>
+    </style>
+
+    <style name="BackButton" parent="ClickableSurface">
+        <item name="android:textSize">@dimen/subtitle_text_size</item>
+        <item name="android:textColor">@color/on_background</item>
+
+        <item name="android:text">@string/quote_back</item>
+        <item name="iconSize">32dp</item>
+        <item name="icon">@drawable/back</item>
+    </style>
+    
+    <style name="ChooseItem" parent="ClickableSurface">
+        <item name="android:textSize">@dimen/subtitle_text_size</item>
+        <item name="android:textColor">@color/on_background</item>
+
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="icon">@drawable/done</item>
+        <item name="iconSize">26dp</item>
+        <item name="iconTint">@color/on_background</item>
+        <item name="iconGravity">end</item>
+        <item name="android:gravity">start|center_vertical</item>
+        <item name="android:layout_marginTop">@dimen/padding_s</item>
+        <item name="android:layout_marginBottom">@dimen/padding_s</item>
+    </style>
+
+    <style name="BottomRoundedButton" parent="Text">
+        <item name="android:background">@drawable/bottom_rounded_surface</item>
+        <item name="backgroundTint">@color/divider</item>
+        <item name="iconSize">20dp</item>
+        <item name="iconGravity">textStart</item>
+    </style>
+    
+    <style name="BottomBarButton" parent="Icon">
+        <item name="android:padding">@dimen/padding_m</item>
+        <item name="android:background">?android:attr/selectableItemBackground</item>
+    </style>
+
+    <style name="TopRightIconButton" parent="Icon">
+        <item name="android:padding">@dimen/padding_m</item>
+        <item name="android:background">?android:attr/selectableItemBackground</item>
+    </style>
+
 </resources>

@@ -1,209 +1,130 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    >
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/settings_label"
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_margin="16dp"
+        android:layout_margin="@dimen/margin_m"
 
         android:text="@string/settings_label"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:textColor="?attr/colorOnBackground"
-        />
+        style="@style/Text.Title"/>
 
-    <TextView
-        android:id="@+id/settings_swiped_label"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/settings_swiped"
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin_m"
+        android:layout_marginVertical="@dimen/margin_s">
 
-        app:layout_constraintTop_toBottomOf="@id/settings_label"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_margin="20dp"
+        <TextView
+            android:id="@+id/settings_swiped_label"
 
-        android:text="@string/settings_swiped_label"
-        android:textSize="24sp"
-        android:textColor="?attr/colorOnBackground"
-        />
-
-    <TextView
-        android:id="@+id/settings_swiped_description"
-
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
-        app:layout_constraintTop_toBottomOf="@id/settings_swiped_label"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="4dp"
-
-        android:text="@string/settings_swiped_description"
-        android:textSize="20sp"
-        android:textColor="?attr/dividerColor"
-        />
-
-    <RadioGroup
-        android:id="@+id/settings_swiped_group"
-
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
-        app:layout_constraintTop_toBottomOf="@id/settings_swiped_description"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="4dp"
-        >
-
-        <RadioButton
-            android:id="@+id/settings_swiped_on"
-
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
+            android:layout_marginEnd="@dimen/margin_m"
 
-            android:text="@string/settings_on"
-            android:textSize="20sp"
-            android:textColor="?attr/colorOnBackground"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/settings_swiped_mark"
 
-            android:checked="true"
+            android:text="@string/settings_swiped_label"
+            style="@style/Text.Subtitle"/>
 
-            android:foreground="?android:attr/selectableItemBackground"
-            />
-
-        <RadioButton
-            android:id="@+id/settings_swiped_off"
-
-            android:layout_width="match_parent"
+        <TextView
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
+            android:layout_marginEnd="@dimen/margin_m"
 
-            android:text="@string/settings_off"
-            android:textSize="20sp"
-            android:textColor="?attr/colorOnBackground"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/settings_swiped_label"
+            app:layout_constraintEnd_toStartOf="@id/settings_swiped_mark"
 
-            android:foreground="?android:attr/selectableItemBackground"
-            />
+            android:text="@string/settings_swiped_description"
+            android:textColor="@color/divider"
+            style="@style/Text"/>
 
-    </RadioGroup>
+        <CheckBox
+            android:id="@+id/settings_swiped_mark"
 
-    <TextView
-        android:id="@+id/settings_in_quote_label"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/settings_in_quote"
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin_m"
+        android:layout_marginVertical="@dimen/margin_s">
 
-        app:layout_constraintTop_toBottomOf="@id/settings_swiped_group"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_margin="20dp"
+        <TextView
+            android:id="@+id/settings_in_quote_label"
 
-        android:text="@string/settings_in_quote_label"
-        android:textSize="24sp"
-        android:textColor="?attr/colorOnBackground"
-        />
-
-    <TextView
-        android:id="@+id/settings_in_quote_description"
-
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
-        app:layout_constraintTop_toBottomOf="@id/settings_in_quote_label"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="4dp"
-
-        android:text="@string/settings_in_quote_description"
-        android:textSize="20sp"
-        android:textColor="?attr/dividerColor"
-        />
-
-    <RadioGroup
-        android:id="@+id/settings_in_quote_group"
-
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
-        app:layout_constraintTop_toBottomOf="@id/settings_in_quote_description"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="4dp"
-        >
-
-        <RadioButton
-            android:id="@+id/settings_in_quote_on"
-
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
+            android:layout_marginEnd="@dimen/margin_m"
 
-            android:text="@string/settings_on"
-            android:textSize="20sp"
-            android:textColor="?attr/colorOnBackground"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/settings_in_quote_mark"
 
-            android:checked="true"
+            android:text="@string/settings_in_quote_label"
+            style="@style/Text.Subtitle"/>
 
-            android:foreground="?android:attr/selectableItemBackground"
-            />
-
-        <RadioButton
-            android:id="@+id/settings_in_quote_off"
-
-            android:layout_width="match_parent"
+        <TextView
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
+            android:layout_marginEnd="@dimen/margin_m"
 
-            android:text="@string/settings_off"
-            android:textSize="20sp"
-            android:textColor="?attr/colorOnBackground"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/settings_in_quote_label"
+            app:layout_constraintEnd_toStartOf="@id/settings_in_quote_mark"
 
-            android:foreground="?android:attr/selectableItemBackground"
-            />
+            android:text="@string/settings_in_quote_description"
+            android:textColor="@color/divider"
+            style="@style/Text"/>
 
-    </RadioGroup>
+        <CheckBox
+            android:id="@+id/settings_in_quote_mark"
+
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/settings_clear"
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-
-        style="@style/Surface"
-        android:background="@drawable/rounded_surface_outline"
-        android:foreground="?android:attr/selectableItemBackground"
-        app:backgroundTint="@color/red"
+        android:layout_margin="@dimen/margin_m"
 
         android:text="@string/settings_clear"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:textColor="@color/red"
-
         app:icon="@drawable/delete"
-        app:iconSize="26dp"
-        app:iconTint="@color/red"
-        app:iconGravity="textStart"
-        />
+        style="@style/DeleteButton"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

@@ -25,6 +25,7 @@ Android development technology, used in this project:
 * Architecture
     * MVVM
     * Coroutine and Flow
+    * Clean XML structure (style, dimen, layout)
 * DI
     * DaggerHilt
 * Interface
@@ -72,6 +73,7 @@ Android development technology, used in this project:
 * Архитектура
     * MVVM
     * Coroutine и Flow
+    * Чистая XML структура (style, dimen, layout)
 * DI
     * DaggerHilt
 * Интерфейс

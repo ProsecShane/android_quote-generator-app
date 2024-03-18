@@ -5,7 +5,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.RadioButton
+import android.widget.CheckBox
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
@@ -42,51 +43,58 @@ class SettingsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val swipedOn: RadioButton = view.findViewById(R.id.settings_swiped_on)
-        val swipedOff: RadioButton = view.findViewById(R.id.settings_swiped_off)
+        val swiped: ConstraintLayout = view.findViewById(R.id.settings_swiped)
+        val swipedMark: CheckBox = view.findViewById(R.id.settings_swiped_mark)
 
-        val inQuoteOn: RadioButton = view.findViewById(R.id.settings_in_quote_on)
-        val inQuoteOff: RadioButton = view.findViewById(R.id.settings_in_quote_off)
+        val inQuote: ConstraintLayout = view.findViewById(R.id.settings_in_quote)
+        val inQuoteMark: CheckBox = view.findViewById(R.id.settings_in_quote_mark)
 
         val clearButton: MaterialButton = view.findViewById(R.id.settings_clear)
 
-        bindRadioButtons(swipedOn, swipedOff, inQuoteOn, inQuoteOff)
+        bindCheckableOptions(swiped, swipedMark, inQuote, inQuoteMark)
         bindClearButton(clearButton)
 
         lifecycleScope.launch {
             localDataViewModel.askWhenSwiped.collect {
-                swipedOn.isChecked = it
-                swipedOff.isChecked = !it
+                swipedMark.isChecked = it
             }
         }
 
         lifecycleScope.launch {
             localDataViewModel.askWhenInQuote.collect {
-                inQuoteOn.isChecked = it
-                inQuoteOff.isChecked = !it
+                inQuoteMark.isChecked = it
             }
         }
     }
 
     /**
-     * Binds the [RadioButton]s logic.
+     * Binds the options with a CheckBox.
      *
-     * @param swipedOn The button that makes the user confirm the deletion on swipe.
-     * @param swipedOff The button that disables the user's confirmation of the deletion on swipe.
-     * @param inQuoteOff The button that makes the user confirm the deletion when in quote.
-     * @param inQuoteOn The button that disables the user's confirmation of the deletion when in quote.
+     * @param swiped The option that sets whether the user needs to confirm the deletion on swipe.
+     * @param swipedMark The [CheckBox] of the option that sets
+     * whether the user needs to confirm the deletion on swipe.
+     * @param inQuote The option that sets whether the user needs to confirm the deletion on swipe.
+     * @param inQuoteMark The [CheckBox] of the option that sets
+     * whether the user needs to confirm the deletion on swipe.
      */
-    private fun bindRadioButtons(
-        swipedOn: RadioButton,
-        swipedOff: RadioButton,
-        inQuoteOn: RadioButton,
-        inQuoteOff: RadioButton,
+    private fun bindCheckableOptions(
+        swiped: ConstraintLayout,
+        swipedMark: CheckBox,
+        inQuote: ConstraintLayout,
+        inQuoteMark: CheckBox,
     ) {
-        swipedOn.setOnClickListener { localDataViewModel.setAskWhenSwiped(true) }
-        swipedOff.setOnClickListener { localDataViewModel.setAskWhenSwiped(false) }
-
-        inQuoteOn.setOnClickListener { localDataViewModel.setAskWhenInQuote(true) }
-        inQuoteOff.setOnClickListener { localDataViewModel.setAskWhenInQuote(false) }
+        swiped.setOnClickListener {
+            localDataViewModel.setAskWhenSwiped(!localDataViewModel.askWhenSwiped.value)
+        }
+        swipedMark.setOnClickListener {
+            localDataViewModel.setAskWhenSwiped(!localDataViewModel.askWhenSwiped.value)
+        }
+        inQuote.setOnClickListener {
+            localDataViewModel.setAskWhenInQuote(!localDataViewModel.askWhenInQuote.value)
+        }
+        inQuoteMark.setOnClickListener {
+            localDataViewModel.setAskWhenInQuote(!localDataViewModel.askWhenInQuote.value)
+        }
     }
 
     /**
