@@ -6,6 +6,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.prosecshane.quoteapp.R
 import com.prosecshane.quoteapp.data.sharedpreferences.SPConstants
+import com.prosecshane.quoteapp.domain.common.toInt
+import com.prosecshane.quoteapp.domain.common.toNotificationPeriod
+import com.prosecshane.quoteapp.domain.model.NotificationPeriod
 import com.prosecshane.quoteapp.domain.model.Quote
 import com.prosecshane.quoteapp.domain.repository.QuoteRepository
 import com.prosecshane.quoteapp.domain.sharedpreferences.SPApi
@@ -61,6 +64,13 @@ class LocalDataViewModel @Inject constructor(
     val sortMethod: StateFlow<SortMethod> = _sortMethod.asStateFlow()
 
     /**
+     * Mutable and immutable StateFlows that contain information
+     * about how often the user should be reminded to use this app.
+     */
+    private val _notificationPeriod = MutableStateFlow(NotificationPeriod.Off)
+    val notificationPeriod: StateFlow<NotificationPeriod> = _notificationPeriod.asStateFlow()
+
+    /**
      * Loading or getting default values.
      */
     init {
@@ -76,6 +86,12 @@ class LocalDataViewModel @Inject constructor(
                 _sortMethod.update {
                     val sortMethodId = spApi.get(SPConstants.sortKey, 0)
                     sortMethodsInfo.first { it.id == sortMethodId }.sortMethod
+                }
+                _notificationPeriod.update {
+                    spApi.get(
+                        SPConstants.notificationPeriodKey,
+                        NotificationPeriod.Off.toInt(),
+                    ).toNotificationPeriod()
                 }
             }
         }
@@ -160,6 +176,18 @@ class LocalDataViewModel @Inject constructor(
             withContext(Dispatchers.IO) {
                 val sortMethodId = sortMethodsInfo.first { it.sortMethod == newValue }.id
                 spApi.set(SPConstants.sortKey, sortMethodId)
+            }
+        }
+    }
+
+    /**
+     * Function that sets the value for how often the user should be reminded to use this app.
+     */
+    fun setNotificationPeriod(newValue: NotificationPeriod) {
+        _notificationPeriod.update { newValue }
+        viewModelScope.launch {
+            withContext(Dispatchers.IO) {
+                spApi.set(SPConstants.notificationPeriodKey, newValue.toInt())
             }
         }
     }

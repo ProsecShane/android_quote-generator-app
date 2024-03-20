@@ -22,15 +22,16 @@
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/margin_m"
-        android:layout_marginVertical="@dimen/margin_s">
+
+        style="@style/ClickableSurface">
 
         <TextView
             android:id="@+id/settings_swiped_label"
 
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/margin_m"
+            android:layout_marginHorizontal="@dimen/margin_m"
+            android:layout_marginTop="@dimen/margin_s"
 
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -42,11 +43,13 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/margin_m"
+            android:layout_marginHorizontal="@dimen/margin_m"
+            android:layout_marginBottom="@dimen/margin_s"
 
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/settings_swiped_label"
             app:layout_constraintEnd_toStartOf="@id/settings_swiped_mark"
+            app:layout_constraintBottom_toBottomOf="parent"
 
             android:text="@string/settings_swiped_description"
             android:textColor="@color/divider"
@@ -57,6 +60,8 @@
 
             android:layout_width="wrap_content"
             android:layout_height="0dp"
+            android:layout_marginVertical="@dimen/margin_s"
+            android:layout_marginEnd="@dimen/margin_m"
 
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -69,15 +74,16 @@
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/margin_m"
-        android:layout_marginVertical="@dimen/margin_s">
+
+        style="@style/ClickableSurface">
 
         <TextView
             android:id="@+id/settings_in_quote_label"
 
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/margin_m"
+            android:layout_marginHorizontal="@dimen/margin_m"
+            android:layout_marginTop="@dimen/margin_s"
 
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -89,11 +95,13 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/margin_m"
+            android:layout_marginHorizontal="@dimen/margin_m"
+            android:layout_marginBottom="@dimen/margin_s"
 
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/settings_in_quote_label"
             app:layout_constraintEnd_toStartOf="@id/settings_in_quote_mark"
+            app:layout_constraintBottom_toBottomOf="parent"
 
             android:text="@string/settings_in_quote_description"
             android:textColor="@color/divider"
@@ -104,12 +112,46 @@
 
             android:layout_width="wrap_content"
             android:layout_height="0dp"
+            android:layout_marginVertical="@dimen/margin_s"
+            android:layout_marginEnd="@dimen/margin_m"
 
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:id="@+id/settings_notification"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+
+        style="@style/ClickableSurface">
+
+        <TextView
+            android:id="@+id/settings_notification_period"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin_m"
+            android:layout_marginTop="@dimen/margin_s"
+
+            android:text="@string/settings_notification_label"
+            style="@style/Text.Subtitle"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin_m"
+            android:layout_marginBottom="@dimen/margin_s"
+
+            android:text="@string/settings_notification_description"
+            android:textColor="@color/divider"
+            style="@style/Text"/>
+
+    </LinearLayout>
 
     <View
         android:layout_width="wrap_content"

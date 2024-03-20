@@ -40,8 +40,9 @@ Android development technology, used in this project:
 * Data storage
     * Room
     * Shared Preferences
-* Tests (**Not yet implemented!**)
 * Notifications (**Not yet implemented!**)
+    * AlarmManager
+* Tests (**Not yet implemented!**)
 
 **If you have any questions, contact me through this: prosecshane@yandex.ru**
 
@@ -88,7 +89,8 @@ Android development technology, used in this project:
 * Хранение данных
     * Room
     * Shared Preferences
-* Тесты (**Пока что не реализовано!**)
 * Уведомления (**Пока что не реализовано!**)
+    * AlarmManager
+* Тесты (**Пока что не реализовано!**)
 
 **Если у вас есть какие-либо вопросы, вы можете обратиться ко мне по электронной почте: prosecshane@yandex.ru**

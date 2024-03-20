@@ -32,6 +32,12 @@
     <string name="settings_in_quote_label">Confirm In-Quote Deletion</string>
     <string name="settings_in_quote_description">Confirm the deletion of quotes in a quote view window</string>
     <string name="settings_clear">Delete ALL Quotes</string>
+    <string name="settings_notification_label">Remind after: %s</string>
+    <string name="settings_notification_off">don\'t remind</string>
+    <string name="settings_notification_daily">a day without use</string>
+    <string name="settings_notification_weekly">a week without use</string>
+    <string name="settings_notification_monthly">a month without use</string>
+    <string name="settings_notification_description">How often to remind you to use this app after a certain period without use. Click to go through different options</string>
     
     <string name="delete_title">Confirm Delete</string>
     <string name="delete_description">Are you sure you want to delete this Quote?</string>

@@ -6,12 +6,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CheckBox
+import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.button.MaterialButton
 import com.prosecshane.quoteapp.R
+import com.prosecshane.quoteapp.domain.common.allPeriods
+import com.prosecshane.quoteapp.domain.common.toInt
+import com.prosecshane.quoteapp.domain.common.toNotificationPeriod
+import com.prosecshane.quoteapp.domain.model.NotificationPeriod
 import com.prosecshane.quoteapp.presentation.viewmodel.LocalDataViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -49,10 +55,14 @@ class SettingsFragment : Fragment() {
         val inQuote: ConstraintLayout = view.findViewById(R.id.settings_in_quote)
         val inQuoteMark: CheckBox = view.findViewById(R.id.settings_in_quote_mark)
 
+        val notificationOption: LinearLayout = view.findViewById(R.id.settings_notification)
+        val notificationPeriod: TextView = view.findViewById(R.id.settings_notification_period)
+
         val clearButton: MaterialButton = view.findViewById(R.id.settings_clear)
 
         bindCheckableOptions(swiped, swipedMark, inQuote, inQuoteMark)
         bindClearButton(clearButton)
+        bindNotificationOption(notificationOption)
 
         lifecycleScope.launch {
             localDataViewModel.askWhenSwiped.collect {
@@ -63,6 +73,20 @@ class SettingsFragment : Fragment() {
         lifecycleScope.launch {
             localDataViewModel.askWhenInQuote.collect {
                 inQuoteMark.isChecked = it
+            }
+        }
+
+        lifecycleScope.launch {
+            localDataViewModel.notificationPeriod.collect {
+                notificationPeriod.text = getString(
+                    R.string.settings_notification_label,
+                    getString(when (it) {
+                        NotificationPeriod.Off -> R.string.settings_notification_off
+                        NotificationPeriod.Daily -> R.string.settings_notification_daily
+                        NotificationPeriod.Weekly -> R.string.settings_notification_weekly
+                        NotificationPeriod.Monthly -> R.string.settings_notification_monthly
+                    } )
+                )
             }
         }
     }
@@ -94,6 +118,19 @@ class SettingsFragment : Fragment() {
         }
         inQuoteMark.setOnClickListener {
             localDataViewModel.setAskWhenInQuote(!localDataViewModel.askWhenInQuote.value)
+        }
+    }
+
+    /**
+     * Binds the reminder notification option.
+     *
+     * @param option The option layout that will respond to clicks.
+     */
+    private fun bindNotificationOption(option: LinearLayout) {
+        option.setOnClickListener {
+            val currentValue = localDataViewModel.notificationPeriod.value.toInt()
+            val newValue = (currentValue + 1) % allPeriods.size
+            localDataViewModel.setNotificationPeriod(newValue.toNotificationPeriod())
         }
     }
 
