@@ -1,5 +1,7 @@
 package com.prosecshane.quoteapp.presentation.ui.activity
 
+import android.app.NotificationManager
+import android.content.Context
 import android.os.Bundle
 import android.widget.ImageButton
 import androidx.activity.OnBackPressedCallback
@@ -10,11 +12,22 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.prosecshane.quoteapp.R
+import com.prosecshane.quoteapp.data.alarm.ReminderSchedulerImpl
+import com.prosecshane.quoteapp.data.sharedpreferences.SPConstants
+import com.prosecshane.quoteapp.domain.common.toInt
+import com.prosecshane.quoteapp.domain.common.toMillis
+import com.prosecshane.quoteapp.domain.common.toNotificationPeriod
+import com.prosecshane.quoteapp.domain.model.NotificationPeriod
+import com.prosecshane.quoteapp.domain.model.Reminder
+import com.prosecshane.quoteapp.domain.sharedpreferences.SPApi
 import com.prosecshane.quoteapp.presentation.ui.common.FragmentVariant
 import com.prosecshane.quoteapp.presentation.ui.common.bottomBarButtonsInfo
 import com.prosecshane.quoteapp.presentation.viewmodel.QuoteAppViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
+import javax.inject.Inject
 
 /**
  * App's main and only activity. Has a fragment container
@@ -37,6 +50,12 @@ class MainActivity : AppCompatActivity() {
      * the activity stays consistent even after being recreated.
      */
     private val quoteAppViewModel: QuoteAppViewModel by viewModels()
+
+    /**
+     * DaggerHilt injected spApi to read and re-write the reminder data.
+     */
+    @Inject
+    lateinit var spApi: SPApi
 
     /**
      * Callback for the activity on having the back button pressed.
@@ -77,6 +96,50 @@ class MainActivity : AppCompatActivity() {
                 gotoFragment(it.last())
             }
         }
+    }
+
+    /**
+     * Should be re-written to not use runBlocking!
+     * Hides the reminder notification and cancel reminders on Activity start.
+     */
+    override fun onStart() {
+        super.onStart()
+
+        val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        notificationManager.cancel(1)
+
+        val reminderScheduler = ReminderSchedulerImpl(this@MainActivity)
+        val reminder = runBlocking(Dispatchers.IO) {
+            val period = spApi.get(
+                SPConstants.notificationPeriodKey,
+                NotificationPeriod.Off.toInt(),
+            ).toNotificationPeriod()
+            val firstTime = spApi.get(SPConstants.firstTimeReminderKey, 0L)
+
+            Reminder(period, firstTime)
+        }
+        reminderScheduler.cancel(reminder)
+    }
+
+    /**
+     * Should be re-written to not use runBlocking!
+     * Schedules reminder on Activity stop.
+     */
+    override fun onStop() {
+        val reminderScheduler = ReminderSchedulerImpl(this)
+        val reminder = runBlocking(Dispatchers.IO) {
+            val period = spApi.get(
+                SPConstants.notificationPeriodKey,
+                NotificationPeriod.Off.toInt(),
+            ).toNotificationPeriod()
+            val firstTime = System.currentTimeMillis() + period.toMillis()
+
+            spApi.set(SPConstants.firstTimeReminderKey, firstTime)
+            Reminder(period = period, firstTime = firstTime)
+        }
+        reminderScheduler.schedule(reminder)
+
+        super.onStop()
     }
 
     /**

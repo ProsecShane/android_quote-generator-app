@@ -192,6 +192,22 @@ class LocalDataViewModel @Inject constructor(
         }
     }
 
+    /**
+     * Function that updates the value for how often the user should be reminded to use this app
+     * from SharedPreferences.
+     */
+    fun updateNotificationPeriod() {
+        viewModelScope.launch {
+            withContext(Dispatchers.IO) {
+                _notificationPeriod.update {
+                    spApi.get(
+                        SPConstants.notificationPeriodKey,
+                        NotificationPeriod.Off.toInt(),
+                    ).toNotificationPeriod()
+                }
+            }
+        }
+    }
 
     /**
      * Call a "Confirm deletion" AlertDialog.

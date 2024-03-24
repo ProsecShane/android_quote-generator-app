@@ -17,4 +17,5 @@ object SPConstants {
     const val keywordsKey = "quote_app_keywords"
     const val sortKey = "quote_app_sort_method"
     const val notificationPeriodKey = "quote_app_notif_period"
+    const val firstTimeReminderKey = "quote_app_first_time"
 }

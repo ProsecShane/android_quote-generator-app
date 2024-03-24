@@ -1,6 +1,7 @@
 package com.prosecshane.quoteapp.presentation.ui.fragment
 
 import android.app.AlertDialog
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -19,6 +20,7 @@ import com.prosecshane.quoteapp.domain.common.toInt
 import com.prosecshane.quoteapp.domain.common.toNotificationPeriod
 import com.prosecshane.quoteapp.domain.model.NotificationPeriod
 import com.prosecshane.quoteapp.presentation.viewmodel.LocalDataViewModel
+import com.prosecshane.quoteapp.utils.Permission
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -92,6 +94,18 @@ class SettingsFragment : Fragment() {
     }
 
     /**
+     * Update the notification period value in [LocalDataViewModel] instance
+     * and reset it if the permission was revoked on Fragment resume.
+     */
+    override fun onResume() {
+        super.onResume()
+
+        localDataViewModel.updateNotificationPeriod()
+        if (!Permission.isGranted(requireContext(), android.Manifest.permission.POST_NOTIFICATIONS))
+            localDataViewModel.setNotificationPeriod(NotificationPeriod.Off)
+    }
+
+    /**
      * Binds the options with a CheckBox.
      *
      * @param swiped The option that sets whether the user needs to confirm the deletion on swipe.
@@ -127,10 +141,29 @@ class SettingsFragment : Fragment() {
      * @param option The option layout that will respond to clicks.
      */
     private fun bindNotificationOption(option: LinearLayout) {
-        option.setOnClickListener {
+        val increment: () -> Unit = {
             val currentValue = localDataViewModel.notificationPeriod.value.toInt()
             val newValue = (currentValue + 1) % allPeriods.size
             localDataViewModel.setNotificationPeriod(newValue.toNotificationPeriod())
+        }
+        option.setOnClickListener {
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) {
+                increment()
+            } else {
+                val permissionGranted = Permission.isGranted(
+                    requireContext(),
+                    android.Manifest.permission.POST_NOTIFICATIONS,
+                )
+                if (!permissionGranted) {
+                    askNotificationsPermissionDialog {
+                        Permission.request(
+                            requireActivity(),
+                            android.Manifest.permission.POST_NOTIFICATIONS,
+                            10
+                        )
+                    }
+                } else increment()
+            }
         }
     }
 
@@ -139,9 +172,7 @@ class SettingsFragment : Fragment() {
      */
     private fun bindClearButton(clearButton: MaterialButton) {
         clearButton.setOnClickListener {
-            confirmClear {
-                localDataViewModel.clearQuotes()
-            }
+             confirmClear { localDataViewModel.clearQuotes() }
         }
     }
 
@@ -153,10 +184,10 @@ class SettingsFragment : Fragment() {
     private fun confirmClear(
         onDeleteCallback: () -> Unit,
     ) {
-        val title = requireContext().getString(R.string.clear_title)
-        val description = requireContext().getString(R.string.clear_description)
-        val delete = requireContext().getString(R.string.delete_yes)
-        val cancel = requireContext().getString(R.string.delete_no)
+        val title = getString(R.string.clear_title)
+        val description = getString(R.string.clear_description)
+        val delete = getString(R.string.delete_yes)
+        val cancel = getString(R.string.delete_no)
 
         AlertDialog.Builder(requireContext())
             .setTitle(title)
@@ -176,10 +207,10 @@ class SettingsFragment : Fragment() {
     private fun confirmClear2(
         onDeleteCallback: () -> Unit,
     ) {
-        val title = requireContext().getString(R.string.clear_title)
-        val description = requireContext().getString(R.string.clear_description_2)
-        val delete = requireContext().getString(R.string.delete_yes)
-        val cancel = requireContext().getString(R.string.delete_no)
+        val title = getString(R.string.clear_title)
+        val description = getString(R.string.clear_description_2)
+        val delete = getString(R.string.delete_yes)
+        val cancel = getString(R.string.delete_no)
 
         AlertDialog.Builder(requireContext())
             .setTitle(title)
@@ -187,6 +218,25 @@ class SettingsFragment : Fragment() {
             .setPositiveButton(delete) { _, _ -> onDeleteCallback() }
             .setNegativeButton(cancel) { _, _ -> }
             .setOnCancelListener { }
+            .create()
+            .show()
+    }
+
+    /**
+     * [AlertDialog] that informs the user that the app needs permission to send notifications.
+     *
+     * @param onReadCallback Callback that gets called after the user read the [AlertDialog].
+     */
+    private fun askNotificationsPermissionDialog(onReadCallback: () -> Unit) {
+        val title = getString(R.string.settings_notification_ask_title)
+        val description = getString(R.string.settings_notification_ask_desc)
+        val ok = getString(R.string.settings_notification_ask_ok)
+
+        AlertDialog.Builder(requireContext())
+            .setTitle(title)
+            .setMessage(description)
+            .setPositiveButton(ok) { _, _ -> onReadCallback()}
+            .setOnCancelListener { onReadCallback() }
             .create()
             .show()
     }

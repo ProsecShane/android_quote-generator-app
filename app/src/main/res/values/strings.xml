@@ -37,6 +37,9 @@
     <string name="settings_notification_daily">a day without use</string>
     <string name="settings_notification_weekly">a week without use</string>
     <string name="settings_notification_monthly">a month without use</string>
+    <string name="settings_notification_ask_title">Allow notifications</string>
+    <string name="settings_notification_ask_desc">This app needs you to allow sending notifications, so that it can remind you to use it</string>
+    <string name="settings_notification_ask_ok">OK</string>
     <string name="settings_notification_description">How often to remind you to use this app after a certain period without use. Click to go through different options</string>
     
     <string name="delete_title">Confirm Delete</string>

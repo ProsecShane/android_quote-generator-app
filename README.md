@@ -8,11 +8,13 @@
 App that can generate a quote based on given keywords by using an AI language model.
 Made for **Android** with **Kotlin**.
 
-[**Pre-release version is out!**](https://github.com/ProsecShane/android_quote-generator-app/releases/tag/v1.0.0-beta)
+[**NEW pre-release version is out!**](https://github.com/ProsecShane/android_quote-generator-app/releases/tag/v1.1.0-beta)
 
-![](https://i.ibb.co/9WzdNrc/concat1.png)
+![](https://i.ibb.co/4PbGH79/concat-1.png)
 
-![](https://i.ibb.co/GWPjQL9/concat2.png)
+![](https://i.ibb.co/d0HHfvc/concat-2.png)
+
+![](https://i.ibb.co/y4hLczt/notification-1.png)
 
 ----
 
@@ -40,8 +42,9 @@ Android development technology, used in this project:
 * Data storage
     * Room
     * Shared Preferences
-* Notifications (**Not yet implemented!**)
+* Notifications
     * AlarmManager
+    * BroadcastReceiver
 * Tests (**Not yet implemented!**)
 
 **If you have any questions, contact me through this: prosecshane@yandex.ru**
@@ -57,11 +60,13 @@ Android development technology, used in this project:
 Приложение, которое генерирует цитату на основании данных ключевых слов при помощи ИИ языковой модели.
 Сделано для **Android** с помощью **Kotlin**.
 
-[**Вышла пре-релизная версия приложения!**](https://github.com/ProsecShane/android_quote-generator-app/releases/tag/v1.0.0-beta)
+[**Вышла НОВАЯ пре-релизная версия приложения!**](https://github.com/ProsecShane/android_quote-generator-app/releases/tag/v1.1.0-beta)
 
-![](https://i.ibb.co/9WzdNrc/concat1.png)
+![](https://i.ibb.co/4PbGH79/concat-1.png)
 
-![](https://i.ibb.co/GWPjQL9/concat2.png)
+![](https://i.ibb.co/d0HHfvc/concat-2.png)
+
+![](https://i.ibb.co/y4hLczt/notification-1.png)
 
 ----
 
@@ -89,8 +94,9 @@ Android development technology, used in this project:
 * Хранение данных
     * Room
     * Shared Preferences
-* Уведомления (**Пока что не реализовано!**)
+* Уведомления
     * AlarmManager
+    * BroadcastReceiver
 * Тесты (**Пока что не реализовано!**)
 
 **Если у вас есть какие-либо вопросы, вы можете обратиться ко мне по электронной почте: prosecshane@yandex.ru**
