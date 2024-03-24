@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+
     android:id="@+id/sort_choices"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,68 +9,57 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/sort_date_desc"
-        style="@style/SortItem"
-        android:text="@string/sort_date_desc"
-        />
+        style="@style/ChooseItem"
+        android:text="@string/sort_date_desc"/>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@drawable/divider"
-        />
+        android:background="@drawable/divider"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/sort_date_asc"
-        style="@style/SortItem"
-        android:text="@string/sort_date_asc"
-        />
+        style="@style/ChooseItem"
+        android:text="@string/sort_date_asc"/>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@drawable/divider"
-        />
+        android:background="@drawable/divider"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/sort_quote_asc"
-        style="@style/SortItem"
-        android:text="@string/sort_quote_asc"
-        />
+        style="@style/ChooseItem"
+        android:text="@string/sort_quote_asc"/>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@drawable/divider"
-        />
+        android:background="@drawable/divider"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/sort_quote_desc"
-        style="@style/SortItem"
-        android:text="@string/sort_quote_desc"
-        />
+        style="@style/ChooseItem"
+        android:text="@string/sort_quote_desc"/>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@drawable/divider"
-        />
+        android:background="@drawable/divider"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/sort_kw_asc"
-        style="@style/SortItem"
-        android:text="@string/sort_kw_asc"
-        />
+        style="@style/ChooseItem"
+        android:text="@string/sort_kw_asc"/>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@drawable/divider"
-        />
+        android:background="@drawable/divider"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/sort_kw_desc"
-        style="@style/SortItem"
-        android:text="@string/sort_kw_desc"
-        />
+        style="@style/ChooseItem"
+        android:text="@string/sort_kw_desc"/>
 
 </LinearLayout>

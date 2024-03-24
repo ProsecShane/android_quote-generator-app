@@ -1,4 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="rounded_corner_radius">15dp</dimen>
+
+    <dimen name="margin_m">16dp</dimen>
+    <dimen name="margin_s">8dp</dimen>
+
+    <dimen name="padding_m">10dp</dimen>
+    <dimen name="padding_s">6dp</dimen>
+
+    <dimen name="text_size">14sp</dimen>
+    <dimen name="large_text_size">18sp</dimen>
+    <dimen name="subtitle_text_size">20sp</dimen>
+    <dimen name="title_text_size">24sp</dimen>
+
+    <dimen name="elevation">4dp</dimen>
 </resources>
